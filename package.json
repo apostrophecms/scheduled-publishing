@@ -1,7 +1,7 @@
 {
-  "name": "@apostrophecms/module-template",
+  "name": "@apostrophecms-pro/scheduled-publishing",
   "version": "1.0.0",
-  "description": "A template for creating an ApostropheCMS 3 module.",
+  "description": "Scheduled publishing for ApostropheCMS 3.",
   "main": "index.js",
   "scripts": {
     "lint": "npm run eslint",
@@ -10,19 +10,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/apostrophecms/module-template.git"
+    "url": "git+https://github.com/apostrophecms/scheduled-publishing.git"
   },
-  "homepage": "https://github.com/apostrophecms/module-template#readme",
+  "homepage": "https://github.com/apostrophecms/scheduled-publishing#readme",
   "author": "Apostrophe Technologies",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "devDependencies": {
     "eslint": "^7.9.0",
     "eslint-config-apostrophe": "^3.4.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-mocha": "^10.0.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^8.7.1",
     "stylelint": "^13.7.1",
     "stylelint-config-apostrophe": "^1.0.0"
   }
