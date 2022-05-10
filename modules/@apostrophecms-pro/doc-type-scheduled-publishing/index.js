@@ -18,14 +18,14 @@ module.exports = {
         }
       },
       group: {
-          utility: {
-            fields: [
-              'slug',
-              'visibility',
-              'scheduledPublish',
-              'scheduledUnpublish'
-            ]
-          }
+        utility: {
+          fields: [
+            'slug',
+            'visibility',
+            'scheduledPublish',
+            'scheduledUnpublish'
+          ]
+        }
       }
     };
   }
