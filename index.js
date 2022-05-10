@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+// const dayjs = require('dayjs')
 
 module.exports = {
   bundle: {
@@ -12,9 +13,23 @@ module.exports = {
         usage: 'Updates documents based on scheduled publishing.',
         async task(argv) {
           // Get an req object with admin privileges. You can also use getAnonReq.
-          // const req = self.apos.task.getReq();
+          
+          const locales = Object.keys(self.apos.i18n.locales)
+          
+          const currentDate = new Date()
 
-          // ...
+          for (const locale of locales) {
+            const req = self.apos.task.getReq({
+              locale
+            });
+
+            const docs = await self.apos.doc.find(req, {
+              scheduledPublish: {
+                $lte: currentDate
+              }
+            }).toArray()
+
+          }
         }
       }
     };
@@ -22,9 +37,9 @@ module.exports = {
 };
 
 function getBundleModuleNames() {
-  const source = path.join(__dirname, './modules/@apostrophecms');
+  const source = path.join(__dirname, './modules/@apostrophecms-pro');
   return fs
     .readdirSync(source, { withFileTypes: true })
     .filter(dirent => dirent.isDirectory())
-    .map(dirent => `@apostrophecms/${dirent.name}`);
+    .map(dirent => `@apostrophecms-pro/${dirent.name}`);
 }
