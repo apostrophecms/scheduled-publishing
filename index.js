@@ -22,9 +22,9 @@ module.exports = {
 };
 
 function getBundleModuleNames() {
-  const source = path.join(__dirname, './modules/@apostrophecms');
+  const source = path.join(__dirname, './modules/@apostrophecms-pro');
   return fs
     .readdirSync(source, { withFileTypes: true })
     .filter(dirent => dirent.isDirectory())
-    .map(dirent => `@apostrophecms/${dirent.name}`);
+    .map(dirent => `@apostrophecms-pro/${dirent.name}`);
 }
