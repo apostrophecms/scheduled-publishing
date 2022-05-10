@@ -8,26 +8,24 @@ module.exports = {
     return {
       add: {
         scheduledPublish: {
-          // TODO: use datetime
-          type: 'date',
-          label: 'scheduledPublish',
-          publishedLabel: 'scheduledUpdate'
+          type: 'dateAndTime',
+          label: 'apostrophe:scheduledPublish',
+          publishedLabel: 'apostrophe:scheduledUpdate'
         },
         scheduledUnpublish: {
-          // TODO: use datetime
-          type: 'date',
-          label: 'scheduledUnpublish'
+          type: 'dateAndTime',
+          label: 'apostrophe:scheduledUnpublish'
         }
       },
       group: {
-        utility: {
-          fields: [
-            'slug',
-            'visibility',
-            'scheduledPublish',
-            'scheduledUnpublish'
-          ]
-        }
+          utility: {
+            fields: [
+              'slug',
+              'visibility',
+              'scheduledPublish',
+              'scheduledUnpublish'
+            ]
+          }
       }
     };
   }
