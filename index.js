@@ -24,7 +24,7 @@ module.exports = {
 
             await self.publishDocs(req, currentDate);
 
-            // await self.unpublishDocs(req, currentDate);
+            await self.unpublishDocs(req, currentDate);
           }
         }
       }
@@ -37,7 +37,8 @@ module.exports = {
           scheduledPublish: {
             $lte: currentDate.toISOString()
           }
-        }).toArray();
+        }).sort({ level: 1 })
+          .toArray();
 
         for (const doc of docs) {
           try {
@@ -45,8 +46,8 @@ module.exports = {
               ...doc,
               scheduledPublish: null
             };
-            await self.apos.doc.publish(req, updatedDoc);
 
+            await self.apos.doc.publish(req, updatedDoc);
             await self.apos.doc.db.updateOne({
               _id: doc._id
             }, {
@@ -64,7 +65,9 @@ module.exports = {
           scheduledUnpublish: {
             $lte: currentDate.toISOString()
           }
-        }).toArray();
+        })
+          .sort({ level: -1 })
+          .toArray();
 
         for (const doc of docs) {
           try {
@@ -72,8 +75,8 @@ module.exports = {
               ...doc,
               scheduledUnpublish: null
             };
-            await self.apos.doc.unpublish(req, updatedDoc);
 
+            await self.apos.doc.unpublish(req, updatedDoc);
             await self.apos.doc.db.updateOne({
               _id: doc._id
             }, {
