@@ -4,4 +4,4 @@
 
 ### Adds
 
-* Command line task tu update all documents that have a publishing or unpublishing date by comparing with the current one.
+* Command line task to update all documents that have a publishing or unpublishing date by comparing with the current one.
