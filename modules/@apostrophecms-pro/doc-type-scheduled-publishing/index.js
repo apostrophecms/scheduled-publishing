@@ -10,11 +10,17 @@ module.exports = {
         scheduledPublish: {
           type: 'dateAndTime',
           label: 'apostrophe:scheduledPublish',
-          publishedLabel: 'apostrophe:scheduledUpdate'
+          publishedLabel: 'apostrophe:scheduledUpdate',
+          permission: {
+            action: 'publish'
+          }
         },
         scheduledUnpublish: {
           type: 'dateAndTime',
-          label: 'apostrophe:scheduledUnpublish'
+          label: 'apostrophe:scheduledUnpublish',
+          permission: {
+            action: 'publish'
+          }
         }
       },
       group: {
