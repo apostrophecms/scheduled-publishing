@@ -4,9 +4,9 @@
   "description": "Scheduled publishing for ApostropheCMS 3.",
   "main": "index.js",
   "scripts": {
-    "lint": "npm run eslint",
-    "eslint": "eslint .",
-    "test": "npm run lint"
+    "lint": "eslint .",
+    "mocha": "mocha",
+    "test": "npm run lint && npm run mocha"
   },
   "repository": {
     "type": "git",
@@ -16,6 +16,7 @@
   "author": "Apostrophe Technologies",
   "license": "UNLICENSED",
   "devDependencies": {
+    "apostrophe": "^3.18.1",
     "eslint": "^7.9.0",
     "eslint-config-apostrophe": "^3.4.0",
     "eslint-config-standard": "^14.1.1",
@@ -25,6 +26,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "^8.7.1",
+    "mocha": "^10.0.0",
     "stylelint": "^13.7.1",
     "stylelint-config-apostrophe": "^1.0.0"
   }
