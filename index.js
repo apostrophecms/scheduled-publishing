@@ -64,12 +64,23 @@ module.exports = {
           scheduledUnpublish: {
             $lte: currentDate.toISOString()
           }
-        })
-          .sort({ level: -1 })
+        }).sort({ level: -1 })
           .toArray();
 
         for (const doc of docs) {
           try {
+            if (doc.level === 0) {
+              await self.apos.util.error('Error: You can\'t unpublish the home page.');
+              await self.apos.doc.db.updateOne({
+                _id: doc._id
+              }, {
+                $set: {
+                  scheduledUnpublish: null
+                }
+              });
+              continue;
+            }
+
             const updatedDoc = {
               ...doc,
               scheduledUnpublish: null
@@ -93,9 +104,18 @@ module.exports = {
 };
 
 function getBundleModuleNames() {
-  const source = path.join(__dirname, './modules/@apostrophecms-pro');
-  return fs
-    .readdirSync(source, { withFileTypes: true })
-    .filter(dirent => dirent.isDirectory())
-    .map(dirent => `@apostrophecms-pro/${dirent.name}`);
+  const aposFolders = [ '@apostrophecms', '@apostrophecms-pro' ];
+
+  return aposFolders.reduce((acc, folderName) => {
+    const source = path.join(__dirname, 'modules', folderName);
+    const folders = fs
+      .readdirSync(source, { withFileTypes: true })
+      .filter(dirent => dirent.isDirectory())
+      .map(dirent => `${folderName}/${dirent.name}`);
+
+    return [
+      ...acc,
+      ...folders
+    ];
+  }, []);
 }
