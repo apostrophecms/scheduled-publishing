@@ -68,19 +68,19 @@ module.exports = {
           .toArray();
 
         for (const doc of docs) {
-          if (doc.level === 0) {
-            await self.apos.util.error('Error: You can\'t unpublish the home page.');
-            await self.apos.doc.db.updateOne({
-              _id: doc._id
-            }, {
-              $set: {
-                scheduledUnpublish: null
-              }
-            });
-            continue;
-          }
-
           try {
+            if (doc.level === 0) {
+              await self.apos.util.error('Error: You can\'t unpublish the home page.');
+              await self.apos.doc.db.updateOne({
+                _id: doc._id
+              }, {
+                $set: {
+                  scheduledUnpublish: null
+                }
+              });
+              continue;
+            }
+
             const updatedDoc = {
               ...doc,
               scheduledUnpublish: null
