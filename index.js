@@ -107,7 +107,7 @@ function getBundleModuleNames() {
   const aposFolders = [ '@apostrophecms', '@apostrophecms-pro' ];
 
   return aposFolders.reduce((acc, folderName) => {
-    const source = path.join(__dirname, `modules/${folderName}`);
+    const source = path.join(__dirname, 'modules', folderName);
     const folders = fs
       .readdirSync(source, { withFileTypes: true })
       .filter(dirent => dirent.isDirectory())
