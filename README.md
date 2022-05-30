@@ -41,9 +41,27 @@ require('apostrophe')({
 });
 ```
 
-### Additional usage sections
+Editors can now schedule publication and un-publication times for documents. Note that un-publishing a document means it is no longer available except in draft form. Since the home page must always be available, the home page cannot be scheduled for un-publishing.
 
-### Pre-release checks
+For publiction and un-publication to actually occur, you'll need to run the appropriate command line task on a periodic basis, as described below.
 
-- [ ] If the module does not include CSS, remove the Stylelint config file and dependency.
-- [ ] If any template includes a script with inline code, include the `nonce` attribute set like this: `<script nonce="{{ nonce }}">`.
+## Using the command line task
+
+To actually publish or unpublish the documents at scheduled times, you must execute the appropriate command line task:
+
+```bash
+node app @apostrophecms/scheduled-publishing:update
+```
+
+Typically you will want to schedule this to run periodically using a standard Linux scheduling tool like `cron`. For instance, here is a crontab entry to run the task once per hour:
+
+```bash
+# At the top of every hour
+0 * * * * (cd /path/to/your/apostrophe/project && node app @apostrophecms/scheduled-publishing:update)
+```
+
+You can schedule the task to run more frequently if you plan to schedule publication times in the middle of the hour. Note that the task is safe to run as frequently as you wish, as it won't do anything if no documents are scheduled to be published yet.
+
+For more information, see [how to use cron on Linux](https://opensource.com/article/21/7/cron-linux).
+
+> If you are using our `stagecoach` utility for deployment, don't forget `/current` at the end of the path.

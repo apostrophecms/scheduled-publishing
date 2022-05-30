@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.2
+
+### Fixes
+
+* Documentation oversight re: the necessary command line task.
+
 ## 1.0.1
 
 ### Fixes
