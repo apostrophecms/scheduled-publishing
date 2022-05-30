@@ -1,5 +1,5 @@
 {
-  "name": "@apostrophecms-pro/scheduled-publishing",
+  "name": "@apostrophecms/scheduled-publishing",
   "version": "1.0.0",
   "description": "Scheduled publishing for ApostropheCMS 3.",
   "main": "index.js",

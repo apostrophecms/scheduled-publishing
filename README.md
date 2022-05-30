@@ -25,7 +25,7 @@ This module allows to schedule publishing of your pieces (which includes pages) 
 To install the module, use the command line to run this command in an Apostrophe project's root directory:
 
 ```
-npm install @apostrophecms-pro/scheduled-publishing
+npm install @apostrophecms/scheduled-publishing
 ```
 
 ## Usage
@@ -36,7 +36,7 @@ Configure the Scheduled Publishing module in the `app.js` file:
 require('apostrophe')({
   shortName: 'my-project',
   modules: {
-    '@apostrophecms-pro/scheduled-publishing': {}
+    '@apostrophecms/scheduled-publishing': {}
   }
 });
 ```

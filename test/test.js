@@ -47,7 +47,7 @@ describe('Apostrophe Scheduled Publishing', function() {
 
     assert(!unpublishedTopic);
 
-    await apos.task.invoke('@apostrophecms-pro/scheduled-publishing:update');
+    await apos.task.invoke('@apostrophecms/scheduled-publishing:update');
 
     const publishedTopic = await apos.topic.find(req, {
       title: 'topic 1',
@@ -75,7 +75,7 @@ describe('Apostrophe Scheduled Publishing', function() {
     assert(draftUpdated);
     assert(draftUpdated.title === 'topic 1 updated');
 
-    await apos.task.invoke('@apostrophecms-pro/scheduled-publishing:update');
+    await apos.task.invoke('@apostrophecms/scheduled-publishing:update');
 
     const updatedPublished = await apos.topic.find(req, {
       aposDocId: draftDoc.aposDocId,
@@ -93,7 +93,7 @@ describe('Apostrophe Scheduled Publishing', function() {
       scheduledPublish: getDate(true)
     });
 
-    await apos.task.invoke('@apostrophecms-pro/scheduled-publishing:update');
+    await apos.task.invoke('@apostrophecms/scheduled-publishing:update');
 
     const publishedTopic = await apos.topic.find(req, {
       title: 'topic 1',
@@ -128,7 +128,7 @@ describe('Apostrophe Scheduled Publishing', function() {
     assert(draftUpdated);
     assert(draftUpdated.title === 'topic 1 updated');
 
-    await apos.task.invoke('@apostrophecms-pro/scheduled-publishing:update');
+    await apos.task.invoke('@apostrophecms/scheduled-publishing:update');
 
     const updatedPublished = await apos.topic.find(req, {
       aposDocId: draftDoc.aposDocId,
@@ -148,7 +148,7 @@ describe('Apostrophe Scheduled Publishing', function() {
 
     const publishedDoc = await publishDoc(apos, draftDoc);
 
-    await apos.task.invoke('@apostrophecms-pro/scheduled-publishing:update');
+    await apos.task.invoke('@apostrophecms/scheduled-publishing:update');
 
     const unpublishedDoc = await apos.topic.find(req, {
       _id: publishedDoc._id
@@ -166,7 +166,7 @@ describe('Apostrophe Scheduled Publishing', function() {
 
     const publishedDoc = await publishDoc(apos, draftDoc);
 
-    await apos.task.invoke('@apostrophecms-pro/scheduled-publishing:update');
+    await apos.task.invoke('@apostrophecms/scheduled-publishing:update');
 
     const stillPublishedDoc = await apos.topic.find(req, {
       _id: publishedDoc._id
@@ -188,7 +188,7 @@ describe('Apostrophe Scheduled Publishing', function() {
 
     assert(pages.length === 3);
 
-    await apos.task.invoke('@apostrophecms-pro/scheduled-publishing:update');
+    await apos.task.invoke('@apostrophecms/scheduled-publishing:update');
 
     const publishedPages = await getPublishedPages(apos);
 
@@ -210,7 +210,7 @@ describe('Apostrophe Scheduled Publishing', function() {
 
     assert(publishedPages.length === 2);
 
-    await apos.task.invoke('@apostrophecms-pro/scheduled-publishing:update');
+    await apos.task.invoke('@apostrophecms/scheduled-publishing:update');
 
     const unpublishedPages = await getPublishedPages(apos);
 
@@ -288,7 +288,7 @@ function getAppModules() {
         session: { secret: 'supersecret' }
       }
     },
-    '@apostrophecms-pro/scheduled-publishing': {
+    '@apostrophecms/scheduled-publishing': {
       options: {
         alias: 'scheduledPub'
       }
