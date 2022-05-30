@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.1
+
+### Fixes
+
+* Clarifies module is public, with an MIT license.
+* Module npm organization name changed to match.
+
 ## 1.0.0
 
 ### Adds
