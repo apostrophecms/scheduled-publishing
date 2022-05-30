@@ -104,7 +104,7 @@ module.exports = {
 };
 
 function getBundleModuleNames() {
-  const aposFolders = [ '@apostrophecms', '@apostrophecms-pro' ];
+  const aposFolders = [ '@apostrophecms' ];
 
   return aposFolders.reduce((acc, folderName) => {
     const source = path.join(__dirname, 'modules', folderName);
