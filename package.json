@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/apostrophecms/scheduled-publishing#readme",
   "author": "Apostrophe Technologies",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "devDependencies": {
     "apostrophe": "^3.18.1",
     "eslint": "^7.9.0",
