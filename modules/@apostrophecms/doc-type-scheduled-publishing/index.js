@@ -12,14 +12,16 @@ module.exports = {
           label: 'apostrophe:scheduledPublish',
           publishedLabel: 'apostrophe:scheduledUpdate',
           permission: {
-            action: 'publish'
+            action: 'publish',
+            type: self.__meta.name
           }
         },
         scheduledUnpublish: {
           type: 'dateAndTime',
           label: 'apostrophe:scheduledUnpublish',
           permission: {
-            action: 'publish'
+            action: 'publish',
+            type: self.__meta.name
           }
         }
       },
