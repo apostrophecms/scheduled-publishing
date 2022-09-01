@@ -1,5 +1,11 @@
 # Changelog
 
+## UNRELEASED
+
+### Fixes
+
+* Add missing `permission.type` in schema fields. `@apostrophecms/scheduled-publising` fields were missing on all pieces and pages when the module was used with `@apostrophecms-pro/advanced-permission` enabled.
+
 ## 1.0.2
 
 ### Fixes
