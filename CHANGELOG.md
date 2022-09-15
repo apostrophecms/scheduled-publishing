@@ -1,6 +1,6 @@
 # Changelog
 
-## UNRELEASED
+## 1.0.3 2022-09-15
 
 ### Fixes
 
