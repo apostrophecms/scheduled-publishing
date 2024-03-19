@@ -1,5 +1,12 @@
 # Changelog
 
+## UNRELEASED
+
+### Fixes
+
+* Use manager in test to insert pages
+* Update dependencies
+
 ## 1.0.3 2022-09-15
 
 ### Fixes
