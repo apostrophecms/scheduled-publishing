@@ -346,7 +346,6 @@ async function getPages(apos, draftOrLive = 'draft') {
         slug: '/parent',
         visibility: 'public',
         aposMode: draftOrLive,
-        // path: `${homeId.replace(`:en:${draftOrLive}`, '')}/parent`,
         level: 1,
         rank: 0
       }
@@ -362,7 +361,6 @@ async function getPages(apos, draftOrLive = 'draft') {
         slug: '/parent/child',
         visibility: 'public',
         aposMode: draftOrLive,
-        // path: `${homeId.replace(`:en:${draftOrLive}`, '')}/parent/child`,
         level: 2,
         rank: 0
       }
