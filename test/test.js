@@ -179,10 +179,17 @@ describe('Apostrophe Scheduled Publishing', function() {
     const { draftReq } = getReqs(apos);
     const draftPages = await getPages(apos);
 
-    await apos.doc.db.insertMany(draftPages.map((page) => ({
-      ...page,
-      scheduledPublish: getDate()
-    })));
+    for (const draftPage of draftPages) {
+      await apos.page.insert(
+        draftReq,
+        draftPage.target,
+        'lastChild',
+        {
+          ...draftPage.body,
+          scheduledPublish: getDate()
+        }
+      );
+    }
 
     const pages = await apos.page.find(draftReq).toArray();
 
@@ -196,15 +203,30 @@ describe('Apostrophe Scheduled Publishing', function() {
   });
 
   it('should unpublish pages in the right order if scheduled in the past', async function() {
+    const { draftReq, req } = getReqs(apos);
     const draftPages = await getPages(apos);
     const livePages = await getPages(apos, 'published');
 
-    await apos.doc.db.insertMany(draftPages.map((page) => ({
-      ...page,
-      scheduledUnpublish: getDate()
-    })));
+    for (const draftPage of draftPages) {
+      await apos.page.insert(
+        draftReq,
+        draftPage.target,
+        'lastChild',
+        {
+          ...draftPage.body,
+          scheduledUnpublish: getDate()
+        }
+      );
+    }
 
-    await apos.doc.db.insertMany(livePages);
+    for (const livePage of livePages) {
+      await apos.page.insert(
+        req,
+        livePage.target,
+        'lastChild',
+        livePage.body
+      );
+    }
 
     const publishedPages = await getPublishedPages(apos);
 
@@ -311,37 +333,39 @@ async function getPages(apos, draftOrLive = 'draft') {
     draftOrLive === 'draft' ? draftReq : req,
     { level: 0 }
   ).toObject();
-
+  
   return [
     {
-      _id: `child:en:${draftOrLive}`,
-      title: 'child page',
-      aposLocale: `en:${draftOrLive}`,
-      aposDocId: 'child',
-      type: 'default-page',
-      slug: '/parent/child',
-      visibility: 'public',
-      aposMode: draftOrLive,
-      path: `${homeId.replace(`:en:${draftOrLive}`, '')}/parent/child`,
-      level: 2,
-      rank: 0,
-      aposLastTargetId: `parent:en:${draftOrLive}`,
-      aposLasPosition: 'firstChild'
+      target: homeId,
+      body: {
+        _id: `parent:en:${draftOrLive}`,
+        title: 'parent page',
+        aposLocale: `en:${draftOrLive}`,
+        aposDocId: 'parent',
+        type: 'default-page',
+        slug: '/parent',
+        visibility: 'public',
+        aposMode: draftOrLive,
+        // path: `${homeId.replace(`:en:${draftOrLive}`, '')}/parent`,
+        level: 1,
+        rank: 0
+      }
     },
     {
-      _id: `parent:en:${draftOrLive}`,
-      title: 'parent page',
-      aposLocale: `en:${draftOrLive}`,
-      aposDocId: 'parent',
-      type: 'default-page',
-      slug: '/parent',
-      visibility: 'public',
-      aposMode: draftOrLive,
-      path: `${homeId.replace(`:en:${draftOrLive}`, '')}/parent`,
-      level: 1,
-      rank: 0,
-      aposLastTargetId: homeId,
-      aposLasPosition: 'firstChild'
+      target: `parent:en:${draftOrLive}`,
+      body: {
+        _id: `child:en:${draftOrLive}`,
+        title: 'child page',
+        aposLocale: `en:${draftOrLive}`,
+        aposDocId: 'child',
+        type: 'default-page',
+        slug: '/parent/child',
+        visibility: 'public',
+        aposMode: draftOrLive,
+        // path: `${homeId.replace(`:en:${draftOrLive}`, '')}/parent/child`,
+        level: 2,
+        rank: 0
+      }
     }
   ];
 }
