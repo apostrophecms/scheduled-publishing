@@ -333,7 +333,7 @@ async function getPages(apos, draftOrLive = 'draft') {
     draftOrLive === 'draft' ? draftReq : req,
     { level: 0 }
   ).toObject();
-  
+
   return [
     {
       target: homeId,

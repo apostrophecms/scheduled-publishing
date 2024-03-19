@@ -16,18 +16,17 @@
   "author": "Apostrophe Technologies",
   "license": "MIT",
   "devDependencies": {
-    "apostrophe": "^3.18.1",
-    "eslint": "^7.9.0",
-    "eslint-config-apostrophe": "^3.4.0",
-    "eslint-config-standard": "^14.1.1",
+    "apostrophe": "^4.0.0",
+    "eslint": "^8.57.0",
+    "eslint-config-apostrophe": "^4.3.0",
+    "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-mocha": "^10.0.4",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-vue": "^8.7.1",
-    "mocha": "^10.0.0",
-    "stylelint": "^13.7.1",
-    "stylelint-config-apostrophe": "^1.0.0"
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-vue": "^9.23.0",
+    "mocha": "^10.3.0",
+    "stylelint": "^16.2.1",
+    "stylelint-config-apostrophe": "^3.0.2"
   }
 }
