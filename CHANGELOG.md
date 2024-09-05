@@ -1,5 +1,10 @@
 # Changelog
 
+## UNRELEASED
+
+### Adds
+* Add AI and community-reviewed translation strings.
+
 ## 1.0.4 (2024-03-20)
 
 ### Fixes
